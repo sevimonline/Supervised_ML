@@ -7,17 +7,84 @@ Scrape second-hand car listings from [Arabam.com](https://www.arabam.com/) for 2
 `requests`, `BeautifulSoup`, `pandas`, `time`, `fake_useragent`
 
 **Target Features:**
-- Brand
-- Model
-- Year
-- Mileage (KM)
-- Fuel Type
-- Transmission (Gear Type)
-- Engine Volume
-- Engine Power
-- Location (City)
-- Price
+### 📥 Hedeflenen Değişkenler
 
+#### 🚗 Araç Temel Bilgileri
+| Değişken Adı     | Açıklama                        | Örnek Değer              |
+|------------------|----------------------------------|---------------------------|
+| `marka`          | Araç markası                    | Citroen                   |
+| `seri`           | Model serisi                    | C3                        |
+| `model`          | Alt model ve donanım paketi     | 1.2 PureTech Feel Bold   |
+| `yil`            | Model yılı                      | 2021                      |
+| `kilometre`      | Araç kilometresi                | 56.000 km                 |
+| `vites_tipi`     | Şanzıman türü                   | Düz / Otomatik            |
+| `yakit_tipi`     | Yakıt türü                      | Benzin / Dizel / Hibrit   |
+| `kasa_tipi`      | Araç kasa tipi                  | Hatchback / Sedan         |
+| `cekis_tipi`     | Araç çekiş sistemi              | Önden Çekiş / 4x4         |
+| `motor_hacmi`    | Motor hacmi (cc)                | 1199 cc                   |
+| `motor_gucu`     | Motor gücü (hp)                 | 83 hp                     |
+| `renk`           | Araç rengi                      | Gri                       |
+| `fiyat`          | Araç satış fiyatı               | 728.000 TL                |
+| `konum`          | Araç ilanının şehir bilgisi     | Sakarya / Adapazarı       |
+| `kimden`         | Satıcı türü                     | Galeriden / Sahibinden    |
+
+---
+
+#### 📋 İlan ve Detay Bilgileri
+| Değişken Adı     | Açıklama                        | Örnek Değer              |
+|------------------|----------------------------------|---------------------------|
+| `ilan_no`        | İlan numarası                   | 28145499                  |
+| `ilan_tarihi`    | İlanın yayınlanma tarihi        | 20 Mart 2025              |
+| `aciklama`       | Açıklama metni (opsiyonel)      | "Tramersiz, ilk elden..." |
+| `boya_durumu`    | Araçta boya/değişen var mı      | Tamamı orijinal           |
+| `hasar_kaydi`    | Tramer tutarı                   | Belirtilmemiş             |
+| `takasa_uygun`   | Takas imkanı var mı             | Takasa Uygun              |
+
+---
+
+### 🛠️ Kullanılacak Araçlar & Kütüphaneler
+
+- `requests` – Sayfa HTML içeriğini almak için  
+- `BeautifulSoup` – HTML parsing ve veri çıkarımı  
+- `pandas` – Veriyi tablo haline getirme ve kaydetme  
+- `time`, `random` – Etik scraping ve zamanlama  
+- `fake_useragent` – Bot tespiti riskini azaltmak için sahte tarayıcı başlıkları
+
+---
+
+### 📌 Notlar
+
+- Veriler sayfa bazlı olarak gezilecek (`?page=1`, `?page=2`, ...)  
+- Dönüşüm gerektiren sütunlar: `fiyat`, `kilometre`, `motor_hacmi` → sayıya çevrilecek  
+- Eksik ya da "Belirtilmemiş" olan alanlar `NaN` olarak işaretlenecek  
+- `marka` değişkeni URL’ye göre veya filtre sekmesinden dinamik alınabilir
+
+---
+
+### 💾 Örnek Kayıt (Scraped Row Formatı)
+
+```json
+{
+  "marka": "Citroen",
+  "model": "C3 1.2 PureTech Feel Bold",
+  "yil": 2021,
+  "kilometre": 56000,
+  "vites_tipi": "Düz",
+  "yakit_tipi": "Benzin",
+  "motor_hacmi": 1199,
+  "motor_gucu": 83,
+  "cekis_tipi": "Önden Çekiş",
+  "kasa_tipi": "Hatchback/5",
+  "renk": "Gri",
+  "konum": "Sakarya",
+  "fiyat": 728000,
+  "ilan_no": 28145499,
+  "ilan_tarihi": "2025-03-20",
+  "kimden": "Galeriden",
+  "boya_durumu": "Tamamı orijinal",
+  "hasar_kaydi": null,
+  "takasa_uygun": "Evet"
+}
 ---
 
 ## 🧼 2. Data Preprocessing & Feature Engineering
