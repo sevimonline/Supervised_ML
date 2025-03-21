@@ -6,8 +6,8 @@ Scrape second-hand car listings from [Arabam.com](https://www.arabam.com/) for 2
 **Libraries Used:**  
 `requests`, `BeautifulSoup`, `pandas`, `time`, `fake_useragent`
 
-**Target Features:**
-### 📥 Hedeflenen Değişkenler
+** 📥Target Features:**
+
 
 #### 🚗 Araç Temel Bilgileri
 | Değişken Adı     | Açıklama                        | Örnek Değer              |
@@ -59,32 +59,7 @@ Scrape second-hand car listings from [Arabam.com](https://www.arabam.com/) for 2
 - Eksik ya da "Belirtilmemiş" olan alanlar `NaN` olarak işaretlenecek  
 - `marka` değişkeni URL’ye göre veya filtre sekmesinden dinamik alınabilir
 
----
 
-### 💾 Örnek Kayıt (Scraped Row Formatı)
-
-```json
-{
-  "marka": "Citroen",
-  "model": "C3 1.2 PureTech Feel Bold",
-  "yil": 2021,
-  "kilometre": 56000,
-  "vites_tipi": "Düz",
-  "yakit_tipi": "Benzin",
-  "motor_hacmi": 1199,
-  "motor_gucu": 83,
-  "cekis_tipi": "Önden Çekiş",
-  "kasa_tipi": "Hatchback/5",
-  "renk": "Gri",
-  "konum": "Sakarya",
-  "fiyat": 728000,
-  "ilan_no": 28145499,
-  "ilan_tarihi": "2025-03-20",
-  "kimden": "Galeriden",
-  "boya_durumu": "Tamamı orijinal",
-  "hasar_kaydi": null,
-  "takasa_uygun": "Evet"
-}
 ---
 
 ## 🧼 2. Data Preprocessing & Feature Engineering
